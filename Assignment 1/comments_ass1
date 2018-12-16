@@ -1,0 +1,11 @@
+we have two different option to choose from when running this program. these are commented in the code.
+one where you change the number of boxes and then post to let the other threads know that they can change the number of boxes, and then countinue with the work (the do_action funkction)
+or 
+you can have the cart complete the task with the sleep in do_action and the let the other carts know that they can run their work.
+
+this means that the synchronization is a little bit different, but the smaller the delay in do_action is, the smaller the difference it makes. 
+
+
+The amount of boxes places and boxes returned, usually doesnt differ that much, but one example is that when i ran the program for 60 sec and without delay at all i had around 1200 boxes placed and around 30 million boxes returned.
+
+I also see that after reaching END_OF_TIME (with delay) it usually takes another 20-30 seconds for all the carts to terminate. I suspect that this is because they have already started and are waiting to get access by the semaphore, and because there are several of them waiting. 
